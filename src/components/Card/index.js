@@ -22,7 +22,7 @@ function Card() {
   return (
     <Wrapper>
       <TotalRepos>
-        Total de reposit:
+        Total de repositórios:
         {' '}
         {' '}
         {repositories.length}
