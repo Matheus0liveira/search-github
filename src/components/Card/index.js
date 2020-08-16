@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useUsers } from '../../context/user';
+
 import {
   CardStyled,
   TitleCard,
@@ -8,28 +10,49 @@ import {
   IconStar,
   CountStar,
   TitleStar,
-  Description
-} from './styles'
+  TotalRepos,
+  Description,
+  ALink,
+  Wrapper,
+} from './styles';
 
 function Card() {
+  const { data } = useUsers();
+  const { repositories } = data;
   return (
-    <CardStyled>
-      <TitleStar>
-        <TitleCard>
-          <IconBook />
-              Title
-        </TitleCard>
-        <Star>
-          <IconStar />
-          <CountStar>10</CountStar>
-        </Star>
+    <Wrapper>
+      <TotalRepos>
+        Total de reposit:
+        {' '}
+        {' '}
+        {repositories.length}
+      </TotalRepos>
+      {repositories.map((repo) => (
 
-      </TitleStar>
-      <Description>
-        Projeto realizado pelo Matheus Oliveira Santos o brabo, brafcefef f ef ef ef f  e ee ef efe f e fe
-      </Description>
-    </CardStyled>
-  )
+        <ALink target="_blank" href={repo.html_url}>
+          <CardStyled key={repo.id}>
+            <TitleStar>
+              <TitleCard>
+                <IconBook />
+                {repo.name}
+              </TitleCard>
+              <Star>
+                <IconStar />
+                <CountStar>{repo.stargazers_count}</CountStar>
+              </Star>
+
+            </TitleStar>
+            <Description>
+              {repo.description}
+            </Description>
+
+          </CardStyled>
+        </ALink>
+
+      ))}
+
+    </Wrapper>
+  );
 }
 
 export default Card;

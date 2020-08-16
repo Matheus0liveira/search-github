@@ -1,54 +1,155 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import Lottie from 'react-lottie';
+import Card from '../../components/Card';
+import api from '../../services/api';
+import { IconHearth } from '../../components/Card/styles';
+import logoImage from '../../assets/images/Logo.svg';
+import { useUsers } from '../../context/user';
 
-import Card from '../../components/Card'
-
+import Github from '../../assets/lottie/github.json';
 
 import {
   HeaderStyled, Logo, Image, Form, Input, Button, Result,
-  ImageRounded, Line, Title, FlexCards, TitleFooter
-} from './styles'
-
-
-import { IconHearth } from '../../components/Card/styles'
-import logoImage from '../../assets/images/Logo.svg'
-
-
-
+  ImageRounded, Line, Title, FlexCards, TitleFooter,
+} from './styles';
 
 function Search() {
+  const { data, setData } = useUsers();
+  const [inputValue, setInputValue] = useState();
 
+  useEffect(() => {
+    if (data.login !== '') {
+      (async () => {
+        const resultsData = await api.get(`${data.login}`);
+
+        const {
+          login,
+          name,
+          avatar_url,
+          followers,
+          following,
+          publicRepository,
+
+        } = resultsData.data;
+
+        const resultsRepositories = await api.get(`${login}/repos`);
+
+        const [...newRepo] = resultsRepositories.data;
+
+        const { ...newData } = {
+          login,
+          name,
+          avatar_url,
+          followers,
+          following,
+          publicRepository,
+          repositories: newRepo,
+
+        };
+        setData(
+          newData,
+        );
+      })();
+    }
+  }, [data.login]);
+
+  function handleChangeInput(event) {
+    const { value } = event.target;
+
+    setInputValue(value);
+  }
+
+  function handleClickButton() {
+    setData({ ...data, login: inputValue });
+  }
+
+  function handleKeyPress(event) {
+    if (event.key === 'Enter')handleClickButton();
+  }
+
+  const loadingSearch = {
+    loop: true,
+    autoPlay: true,
+    animationData: Github,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
 
   return (
     <>
+
       <HeaderStyled>
+
         <Logo className="logo">
+
           <Image src={logoImage} alt="Logo" />
+
         </Logo>
+
       </HeaderStyled>
+
       <Form>
-        <Input type='text' placeholder='Digite seu usuário' />
-        <Button type='submit'>BUSCAR</Button>
+
+        <Input
+          type="text"
+          placeholder="Digite seu usuário"
+          onChange={handleChangeInput}
+          onKeyPress={handleKeyPress}
+        />
+
+        <Button
+          type="submit"
+          onClick={handleClickButton}
+        >
+          BUSCAR
+
+        </Button>
+
       </Form>
 
-      <Result>
-        <ImageRounded
-          src={'https://avatars2.githubusercontent.com/u/58826355?s=460&u=8c805f2a4e708a2f3ff9c6095373bcb622f1dda2&v=4'}
-          alt='Imagem'
-        />
-        <Title>Matheus Oliveira Santos</Title>
-        <Line />
+      {data.avatar_url === '' ? (
 
-        <FlexCards>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-        </FlexCards>
-      </Result>
-      <TitleFooter target='_blank' href='https://github.com/Matheus0liveira'>Feito por Matheus Oliveira Santos
-       <IconHearth />
+        <Lottie
+
+          isClickToPauseDisabled
+          options={loadingSearch}
+          width={100}
+          style={{ marginBottom: '200px' }}
+
+        />
+
+      ) : (
+
+        <Result>
+
+          <ImageRounded
+
+            src={data.avatar_url}
+            alt={data.name}
+
+          />
+
+          <Title>{data.name}</Title>
+
+          <Line />
+
+          <FlexCards>
+
+            <Card />
+
+          </FlexCards>
+
+        </Result>
+
+      )}
+
+      <TitleFooter target="_blank" href="https://github.com/Matheus0liveira">
+
+        Feito por Matheus Oliveira Santos
+
+        <IconHearth />
+
       </TitleFooter>
     </>
   );

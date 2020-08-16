@@ -1,16 +1,20 @@
 import React from 'react';
-import Search from './pages/Search'
-import { Container, GlobalStyle } from './assets/styles/global'
+import Search from './pages/Search';
+import { Container, GlobalStyle } from './assets/styles/global';
+
+import UserProvider from './context/user';
 
 function App() {
   return (
     <>
-      <GlobalStyle />
-      <Container>
+      <UserProvider>
+        <GlobalStyle />
+        <Container>
 
-        <Search />
+          <Search />
 
-      </Container>
+        </Container>
+      </UserProvider>
     </>
   );
 }

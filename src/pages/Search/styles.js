@@ -1,21 +1,22 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-import { FlexDiv } from '../../assets/styles/global'
+import { FlexDiv } from '../../assets/styles/global';
 
 export const HeaderStyled = styled.header`
 margin: 60px 0 0 0;
 
-`
+`;
 
 export const Logo = styled(FlexDiv)`
 margin-top: 2rem;
-  
-`
+
+`;
 
 export const Image = styled.img`
-width: 30rem;
-  
-`
+width: 45%;
+min-width: 15rem;
+
+`;
 
 export const Form = styled(FlexDiv)`
   flex-direction: column;
@@ -26,8 +27,8 @@ export const Form = styled(FlexDiv)`
 
     margin: 8.3rem  25rem;
   }
-  
-`
+
+`;
 
 export const Input = styled.input`
 width: 90%;
@@ -42,11 +43,13 @@ color: #212121;
       padding: 0.5rem 1rem;
   }
 
-`
+`;
 
 export const Button = styled.button`
 width: 90%;
-min-width: 8rem;
+min-width: 14rem;
+
+
 padding:  1.5rem 1rem;
 color: #FFF;
 background: #4F88F4;
@@ -63,11 +66,11 @@ transition: opacity 0.2s;
   padding: 7px 1rem;
 }
 
-`
+`;
 
 export const Result = styled.main`
 
-`
+`;
 
 export const ImageRounded = styled.img`
 display: flex;
@@ -79,7 +82,7 @@ border-radius: 50%;
 border: 0.2rem solid #4F87F4;
 margin: 4rem auto 0 ;
 
-`
+`;
 
 export const Line = styled.hr`
 width: 90%;
@@ -88,7 +91,7 @@ border: 0;
 background: #4F87F4;
 height: 1px;
 
-`
+`;
 
 export const Title = styled(FlexDiv)`
 
@@ -96,7 +99,7 @@ font-size: 3rem;
 margin-top: 2.1rem;
 color: #212121;
 
-`
+`;
 
 export const FlexCards = styled.div`
 display: flex;
@@ -108,11 +111,11 @@ margin: 0 auto;
   flex-wrap: no-wrap;
 }
 
-`
+`;
 
 export const TitleFooter = styled(FlexDiv)`
 margin-left: 1rem;
-color:#4F87F4; 
+color:#4F87F4;
 text-decoration: none;
 
-`
+`;
