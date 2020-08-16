@@ -43,6 +43,7 @@ text-align: center;
 padding:  0.5rem 1rem;
 color: #212121;
 
+
   @media (min-width: 700px){
     width: 100%;
     text-align: initial;
@@ -55,6 +56,7 @@ export const Button = styled.button`
 width: 90%;
 min-width: 14rem;
 
+border: 1px solid #ccc;
 
 padding:  1.5rem 1rem;
 color: #FFF;
