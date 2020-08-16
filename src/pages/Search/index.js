@@ -53,6 +53,14 @@ function Search() {
     }
   }, [data.login]);
 
+  useEffect(() => {
+    if (data.repositories.length === 0) {
+      document.title = 'Git-Search';
+    } else {
+      document.title = `(${data.repositories.length} - ${data.login}) Git-Search`;
+    }
+  }, [data]);
+
   function handleChangeInput(event) {
     const { value } = event.target;
 
@@ -65,6 +73,17 @@ function Search() {
 
   function handleKeyPress(event) {
     if (event.key === 'Enter')handleClickButton();
+  }
+  function handleResetResults() {
+    setData({
+      login: '',
+      name: '',
+      avatar_url: '',
+      followers: '',
+      following: '',
+      publicRepository: '',
+      repositories: [],
+    });
   }
 
   const loadingSearch = {
@@ -79,7 +98,7 @@ function Search() {
   return (
     <>
 
-      <HeaderStyled>
+      <HeaderStyled onClick={handleResetResults}>
 
         <Logo className="logo">
 
@@ -109,15 +128,19 @@ function Search() {
       </Form>
 
       {data.avatar_url === '' ? (
+        <>
 
-        <Lottie
+          <Lottie
 
-          isClickToPauseDisabled
-          options={loadingSearch}
-          width={100}
-          style={{ marginBottom: '200px' }}
+            isClickToPauseDisabled
+            options={loadingSearch}
+            width={100}
 
-        />
+          />
+          <Title style={{ marginBottom: '180px' }}>
+            No user selected
+          </Title>
+        </>
 
       ) : (
 

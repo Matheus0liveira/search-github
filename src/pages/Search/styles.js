@@ -4,6 +4,12 @@ import { FlexDiv } from '../../assets/styles/global';
 
 export const HeaderStyled = styled.header`
 margin: 60px 0 0 0;
+cursor: pointer;
+transition: opacity 0.2s ease-in;
+&:hover{
+  opacity: 0.5;
+
+}
 
 `;
 
@@ -52,7 +58,7 @@ min-width: 14rem;
 
 padding:  1.5rem 1rem;
 color: #FFF;
-background: #4F88F4;
+background:#0FCCCE;
 border: 0;
 cursor: pointer;
 transition: opacity 0.2s;
@@ -79,7 +85,7 @@ justify-content: center;
 width: 14rem;
 height: 14rem;
 border-radius: 50%;
-border: 0.2rem solid #4F87F4;
+border: 0.2rem solid #0FCCCE;
 margin: 4rem auto 0 ;
 
 `;
@@ -88,7 +94,7 @@ export const Line = styled.hr`
 width: 90%;
 margin: 2.6rem auto;
 border: 0;
-background: #4F87F4;
+background: #0FCCCE;
 height: 1px;
 
 `;
@@ -113,9 +119,18 @@ margin: 0 auto;
 
 `;
 
-export const TitleFooter = styled(FlexDiv)`
+export const TitleFooter = styled.a`
+display: flex;
+align-items: center;
+justify-content: center;
 margin-left: 1rem;
-color:#4F87F4;
+color:#0FCCCE;
 text-decoration: none;
+transition: color .2s ;
+
+&:hover{
+
+  color: #9DDDDA;
+}
 
 `;

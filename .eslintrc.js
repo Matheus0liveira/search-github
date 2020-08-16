@@ -23,5 +23,6 @@ module.exports = {
     "camelcase": "off",
     "no-console": "off",
     "no-unused-expressions": "off",
+    "no-undef": "off",
   },
 };
