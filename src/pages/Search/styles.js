@@ -19,12 +19,22 @@ margin-top: 2rem;
 svg{
   font-size: 10rem;
   color: ${(props) => props.theme.colors.primary};
+  transition: color .3s;
 }
 h1{
   font-size: 7rem;
   font-weight: normal;
   color: ${(props) => props.theme.colors.primary};
   margin-left: 2rem;
+  transition: color .5s;
+}
+@media (max-width: 740px){
+  svg{
+  font-size: 7rem;
+}
+  h1{
+  font-size: 3.6rem;
+}
 }
 
 `;
@@ -54,6 +64,7 @@ text-align: center;
 padding:  0.5rem 1rem;
 color: #212121;
 border-radius: 0;
+
 border: 0.1rem solid ${(props) => props.theme.colors.secondary};
 
 
@@ -79,7 +90,7 @@ border: none;
 border-radius: 0;
 
 cursor: pointer;
-transition: opacity 0.2s;
+transition: all 0.2s;
 &:hover{
   opacity:0.8;
 
