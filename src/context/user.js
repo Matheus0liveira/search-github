@@ -1,10 +1,10 @@
 import React, {
-  useState, createContext, useContext,
+  useState, createContext,
 } from 'react';
 
-const UserContext = createContext();
+export const UserContext = createContext();
 
-export default function UserProvider({ children }) {
+function UserProvider({ children }) {
   const [data, setData] = useState(
     {
       login: '',
@@ -28,12 +28,4 @@ export default function UserProvider({ children }) {
 
   );
 }
-
-export const useUsers = () => {
-  const context = useContext(UserContext);
-  if (!context) throw new Error('useUsers must be used within a UsersProviders');
-
-  const { data, setData } = context;
-
-  return { data, setData };
-};
+export default UserProvider;

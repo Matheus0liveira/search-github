@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useUsers } from '../../context/user';
+import useUsers from '../../util/useUsers';
 
 import {
   CardStyled,

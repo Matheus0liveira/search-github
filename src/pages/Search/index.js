@@ -5,7 +5,7 @@ import Switch from 'react-switch';
 import { ThemeProvider } from 'styled-components';
 
 import { FaGithubAlt } from 'react-icons/fa';
-import { useUsers } from '../../context/user';
+import useUsers from '../../util/useUsers';
 import { useTheme } from '../../context/theme';
 import { GlobalStyle } from '../../assets/styles/global';
 
@@ -37,8 +37,7 @@ import dark from '../../assets/styles/dark';
 
 function Search() {
   const { data, setData } = useUsers();
-  const [inputValue, setInputValue] = useState();
-  const [selected, setSelected] = useState(false);
+  const [inputValue, setInputValue] = useState('');
 
   const { theme, setTheme } = useTheme();
 
@@ -76,7 +75,7 @@ function Search() {
         );
       })();
     }
-  }, [data.login]);
+  }, [data.login, setData]);
 
   useEffect(() => {
     if (data.repositories.length === 0) {
@@ -85,15 +84,6 @@ function Search() {
       document.title = `(${data.repositories.length} - ${data.login}) Git-Search`;
     }
   }, [data]);
-
-  // // useEffect(() => {
-  // //   localStorage.setItem('theme', JSON.stringify(theme));
-
-  // //   const selectTheme = JSON.parse(localStorage.getItem('theme'));
-  // //   console.log(selectTheme);
-
-  // //   // setTheme(selectTheme);
-  // // }, [theme]);
 
   function handleChangeInput(event) {
     const { value } = event.target;
@@ -121,8 +111,7 @@ function Search() {
   }
 
   function toggleSelectTheme() {
-    setSelected(!selected);
-    theme === light ? setTheme(dark) : setTheme(light);
+    setTheme(theme.title === 'light' ? dark : light);
   }
 
   const loadingSearch = {
@@ -149,16 +138,13 @@ function Search() {
       </HeaderStyled>
 
       <Wrapper>
-        {theme === dark ? <p>Dark</p> : <p>Light</p>}
+        {theme.title === 'dark' ? <p>Dark</p> : <p>Light</p>}
 
         <Switch
 
           onChange={toggleSelectTheme}
-          checked={selected}
-
-          onChange={toggleSelectTheme}
-          checked={selected}
-          onColor="#FFF "
+          checked={theme.title === 'dark'}
+          onColor="#FFF"
           onHandleColor="#212121"
           uncheckedIcon={false}
           checkedIcon={false}
