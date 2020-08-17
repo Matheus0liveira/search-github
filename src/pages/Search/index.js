@@ -13,6 +13,7 @@ import Card from '../../components/Card';
 import api from '../../services/api';
 
 import {
+
   HeaderStyled,
   Logo,
   Form,
@@ -25,6 +26,9 @@ import {
   FlexCards,
   TitleFooter,
   Wrapper,
+  HeaderStyled, Logo, Form, Input, Button, Result,
+  ImageRounded, Line, Title, FlexCards, TitleFooter, Wrapper,
+
 } from './styles';
 
 import { IconHearth } from '../../components/Card/styles';
@@ -84,6 +88,7 @@ function Search() {
     }
   }, [data]);
 
+
   // // useEffect(() => {
   // //   localStorage.setItem('theme', JSON.stringify(theme));
 
@@ -92,6 +97,7 @@ function Search() {
 
   // //   // setTheme(selectTheme);
   // // }, [theme]);
+
 
   function handleChangeInput(event) {
     const { value } = event.target;
@@ -118,7 +124,10 @@ function Search() {
     });
   }
 
+
   function toggleSelectTheme() {
+
+  function handleSelectSwitch() {
     setSelected(!selected);
     theme === light ? setTheme(dark) : setTheme(light);
   }
@@ -150,9 +159,13 @@ function Search() {
         {theme === dark ? <p>Dark</p> : <p>Light</p>}
 
         <Switch
+
           onChange={toggleSelectTheme}
           checked={selected}
-          onColor="#FFF"
+
+          onChange={handleSelectSwitch}
+          checked={selected}
+          onColor="#FFF "
           onHandleColor="#212121"
           uncheckedIcon={false}
           checkedIcon={false}
