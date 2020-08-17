@@ -24,5 +24,7 @@ module.exports = {
     "no-console": "off",
     "no-unused-expressions": "off",
     "no-undef": "off",
+    "import/no-extraneous-dependencies": "off",
+
   },
 };

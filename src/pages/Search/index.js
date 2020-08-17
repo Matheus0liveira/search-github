@@ -1,21 +1,34 @@
 import React, { useEffect, useState } from 'react';
+
 import Lottie from 'react-lottie';
+import Switch from 'react-switch';
+import { ThemeProvider } from 'styled-components';
+
+import { FaGithubAlt } from 'react-icons/fa';
+import { useUsers } from '../../context/user';
+import { useTheme } from '../../context/theme';
+import { GlobalStyle } from '../../assets/styles/global';
+
 import Card from '../../components/Card';
 import api from '../../services/api';
-import { IconHearth } from '../../components/Card/styles';
-import logoImage from '../../assets/images/Logo.svg';
-import { useUsers } from '../../context/user';
-
-import Github from '../../assets/lottie/github.json';
 
 import {
-  HeaderStyled, Logo, Image, Form, Input, Button, Result,
-  ImageRounded, Line, Title, FlexCards, TitleFooter,
+  HeaderStyled, Logo, Form, Input, Button, Result,
+  ImageRounded, Line, Title, FlexCards, TitleFooter, Wrapper,
 } from './styles';
+
+import { IconHearth } from '../../components/Card/styles';
+import Github from '../../assets/lottie/github.json';
+
+import light from '../../assets/styles/light';
+import dark from '../../assets/styles/dark';
 
 function Search() {
   const { data, setData } = useUsers();
   const [inputValue, setInputValue] = useState();
+  const [selected, setSelected] = useState(false);
+
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     if (data.login !== '') {
@@ -72,7 +85,7 @@ function Search() {
   }
 
   function handleKeyPress(event) {
-    if (event.key === 'Enter')handleClickButton();
+    if (event.key === 'Enter') handleClickButton();
   }
   function handleResetResults() {
     setData({
@@ -86,6 +99,11 @@ function Search() {
     });
   }
 
+  function handleSelectSwitch() {
+    setSelected(!selected);
+    theme === light ? setTheme(dark) : setTheme(light);
+  }
+
   const loadingSearch = {
     loop: true,
     autoPlay: true,
@@ -96,17 +114,36 @@ function Search() {
   };
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
+
+      <GlobalStyle />
 
       <HeaderStyled onClick={handleResetResults}>
-
         <Logo className="logo">
-
-          <Image src={logoImage} alt="Logo" />
+          <FaGithubAlt />
+          <h1>GIT-SEARCH</h1>
 
         </Logo>
 
       </HeaderStyled>
+
+      <Wrapper>
+        {theme === dark ? <p>Dark</p> : <p>Light</p>}
+
+        <Switch
+          onChange={handleSelectSwitch}
+          checked={selected}
+          onColor="#FFF "
+          onHandleColor="#212121"
+          uncheckedIcon={false}
+          checkedIcon={false}
+          boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+          activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+          height={10}
+          width={40}
+          handleDiameter={20}
+        />
+      </Wrapper>
 
       <Form>
 
@@ -135,10 +172,9 @@ function Search() {
             isClickToPauseDisabled
             options={loadingSearch}
             width={100}
-
           />
           <Title style={{ marginBottom: '180px' }}>
-            No user selected
+            No user found
           </Title>
         </>
 
@@ -150,7 +186,6 @@ function Search() {
 
             src={data.avatar_url}
             alt={data.name}
-
           />
 
           <Title>{data.name}</Title>
@@ -169,12 +204,13 @@ function Search() {
 
       <TitleFooter target="_blank" href="https://github.com/Matheus0liveira">
 
-        Feito por Matheus Oliveira Santos
-
+        <p>
+          Feito por Matheus Oliveira Santos
+        </p>
         <IconHearth />
 
       </TitleFooter>
-    </>
+    </ThemeProvider>
   );
 }
 

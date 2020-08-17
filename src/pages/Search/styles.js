@@ -16,6 +16,17 @@ transition: opacity 0.2s ease-in;
 export const Logo = styled(FlexDiv)`
 margin-top: 2rem;
 
+svg{
+  font-size: 10rem;
+  color: ${(props) => props.theme.colors.primary};
+}
+h1{
+  font-size: 7rem;
+  font-weight: normal;
+  color: ${(props) => props.theme.colors.primary};
+  margin-left: 2rem;
+}
+
 `;
 
 export const Image = styled.img`
@@ -42,12 +53,15 @@ min-width: 14rem;
 text-align: center;
 padding:  0.5rem 1rem;
 color: #212121;
+border-radius: 0;
+border: 0.1rem solid ${(props) => props.theme.colors.secondary};
 
 
   @media (min-width: 700px){
     width: 100%;
     text-align: initial;
-      padding: 0.5rem 1rem;
+      padding: 0.9rem 1rem;
+
   }
 
 `;
@@ -56,22 +70,23 @@ export const Button = styled.button`
 width: 90%;
 min-width: 14rem;
 
-border: 1px solid #ccc;
 
-padding:  1.5rem 1rem;
-color: #FFF;
-background:#0FCCCE;
-border: 0;
+padding:  1rem 1rem;
+color: ${(props) => props.theme.colors.primary};
+background:${(props) => props.theme.colors.backgroundButton};
+border: 1px solid ${(props) => props.theme.colors.border};
+border: none;
+border-radius: 0;
+
 cursor: pointer;
 transition: opacity 0.2s;
-
 &:hover{
   opacity:0.8;
 
 }
 @media (min-width: 700px){
   width: 40%;
-  padding: 7px 1rem;
+   padding: 1rem 1rem;
 }
 
 `;
@@ -87,7 +102,7 @@ justify-content: center;
 width: 14rem;
 height: 14rem;
 border-radius: 50%;
-border: 0.2rem solid #0FCCCE;
+border: 0.2rem solid ${(props) => props.theme.colors.border};
 margin: 4rem auto 0 ;
 
 `;
@@ -96,7 +111,7 @@ export const Line = styled.hr`
 width: 90%;
 margin: 2.6rem auto;
 border: 0;
-background: #0FCCCE;
+background:${(props) => props.theme.colors.secondary};
 height: 1px;
 
 `;
@@ -105,7 +120,7 @@ export const Title = styled(FlexDiv)`
 
 font-size: 3rem;
 margin-top: 2.1rem;
-color: #212121;
+color: ${(props) => props.theme.colors.primary};
 
 `;
 
@@ -126,13 +141,22 @@ display: flex;
 align-items: center;
 justify-content: center;
 margin-left: 1rem;
-color:#0FCCCE;
+color:${(props) => props.theme.colors.primary};
 text-decoration: none;
 transition: color .2s ;
 
 &:hover{
 
-  color: #9DDDDA;
+  color: ${(props) => props.theme.colors.secondary};
+}
+
+`;
+export const Wrapper = styled(FlexDiv)`
+flex-direction: column;
+
+P{
+  margin: 1rem 0;
+ color: ${(props) => props.theme.colors.secondary};
 }
 
 `;

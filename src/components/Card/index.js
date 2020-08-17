@@ -29,8 +29,8 @@ function Card() {
       </TotalRepos>
       {repositories.map((repo) => (
 
-        <ALink target="_blank" href={repo.html_url}>
-          <CardStyled key={repo.id}>
+        <ALink target="_blank" href={repo.html_url} key={repo.id}>
+          <CardStyled>
             <TitleStar>
               <TitleCard>
                 <IconBook />
