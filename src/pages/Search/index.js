@@ -26,8 +26,6 @@ import {
   FlexCards,
   TitleFooter,
   Wrapper,
-  HeaderStyled, Logo, Form, Input, Button, Result,
-  ImageRounded, Line, Title, FlexCards, TitleFooter, Wrapper,
 
 } from './styles';
 
@@ -88,7 +86,6 @@ function Search() {
     }
   }, [data]);
 
-
   // // useEffect(() => {
   // //   localStorage.setItem('theme', JSON.stringify(theme));
 
@@ -97,7 +94,6 @@ function Search() {
 
   // //   // setTheme(selectTheme);
   // // }, [theme]);
-
 
   function handleChangeInput(event) {
     const { value } = event.target;
@@ -124,10 +120,7 @@ function Search() {
     });
   }
 
-
   function toggleSelectTheme() {
-
-  function handleSelectSwitch() {
     setSelected(!selected);
     theme === light ? setTheme(dark) : setTheme(light);
   }
@@ -163,7 +156,7 @@ function Search() {
           onChange={toggleSelectTheme}
           checked={selected}
 
-          onChange={handleSelectSwitch}
+          onChange={toggleSelectTheme}
           checked={selected}
           onColor="#FFF "
           onHandleColor="#212121"

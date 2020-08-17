@@ -25,6 +25,7 @@ module.exports = {
     "no-unused-expressions": "off",
     "no-undef": "off",
     "import/no-extraneous-dependencies": "off",
+    "react/jsx-no-duplicate-props": "off",
 
   },
 };
