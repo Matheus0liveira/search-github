@@ -33,9 +33,9 @@
   $ yarn install
 
   // Executar
-  npm start
+  $ npm start
   // ou
-  yarn start
+  $ yarn start
 
 ```
 
