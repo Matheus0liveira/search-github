@@ -19,15 +19,31 @@
 
  ---
 
-## Instalação
+## 🖥 Instalação
+```JavaScript
 
+  // Download
+  $ git clone https://github.com/Matheus0liveira/search-github.git
 
+  // Instalando dependências
+  $ npm install
+  // ou
+  $ yarn install
 
+  // Executar
+  npm start
+  // ou
+  yarn start
 
+```
 
-
+## 🎥 Imagens
 <p align='center'>
 <img src='./.github/web.gif' width='700'>
 
 <img src='./.github/mobile.gif' height='425'>
 </p>
+
+## 📎 Visualizar
+
+<a heref='https://searchgithubb.netlify.app/' >searchgithubb</a>
