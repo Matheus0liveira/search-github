@@ -102,10 +102,6 @@ transition: all 0.2s;
 
 `;
 
-export const Result = styled.main`
-
-`;
-
 export const ImageRounded = styled.img`
 display: flex;
 align-items: center;
@@ -151,14 +147,23 @@ export const TitleFooter = styled.a`
 display: flex;
 align-items: center;
 justify-content: center;
-margin-left: 1rem;
 color:${(props) => props.theme.colors.primary};
 text-decoration: none;
-transition: color .2s ;
+width: 100%;
+padding: 0.3rem 0 ;
+position: fixed;
+left: 0;
+bottom: 0;
+background: ${(props) => props.theme.colors.backgroundFooter};
+transition: .2s;
+svg{
+  margin: 0 1rem;
+  color: ${(props) => props.theme.colors.primary};
+}
 
-&:hover{
+p:hover{
 
-  color: ${(props) => props.theme.colors.secondary};
+  opacity: 0.5;
 }
 
 `;

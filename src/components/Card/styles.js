@@ -3,9 +3,9 @@ import { Title } from '../../pages/Search/styles';
 
 import { FlexDiv } from '../../assets/styles/global';
 
-import book from '../../assets/icons/book.svg';
-import star from '../../assets/icons/star.svg';
-import hearth from '../../assets/icons/hearth.svg';
+// import book from '../../assets/icons/book.svg';
+// import star from '../../assets/icons/star.svg';
+// import hearth from '../../assets/icons/hearth.svg';
 
 export const Wrapper = styled.div`
 width: 100vw;
@@ -35,41 +35,40 @@ export const CardStyled = styled.article`
 
 export const TitleStar = styled(FlexDiv)`
   justify-content: space-between;
+  svg{
+
+    width: 1.5rem;
+    color: ${(props) => props.theme.colors.secondary};
+    margin:0  0.5rem;
+    transition: color 2s;
+
+  }
 
 `;
 
 export const TitleCard = styled(Title)`
+
   font-size: 2.5rem;
   justify-content: start;
   margin: 0;
 
-`;
 
-export const IconBook = styled(FlexDiv)`
+  div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+  }
 
-  width:1rem;
-  height: 20px;
-  margin-right: 0.5rem;
-  height:1rem;
-  background-image:  url(${book});
-  background-repeat: no-repeat;
-  background-size: cover;
-  border: 0;
- `;
-export const IconStar = styled(IconBook)`
- background-image:  url(${star});
-
- `;
-export const IconHearth = styled(IconBook)`
-  background-image:  url(${hearth});
-  margin-left: 0.5rem;
-
- `;
-
-export const Star = styled(FlexDiv)`
 
 
 `;
+
+// export const IconHearth = styled(IconBook)`
+//   background-image:  url(${hearth});
+//   margin-left: 0.5rem;
+
+//  `;
 
 export const CountStar = styled.span`
   color: ${(props) => props.theme.colors.primary};

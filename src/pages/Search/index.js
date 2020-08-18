@@ -4,7 +4,7 @@ import Lottie from 'react-lottie';
 import Switch from 'react-switch';
 import { ThemeProvider } from 'styled-components';
 
-import { FaGithubAlt } from 'react-icons/fa';
+import { FaGithubAlt, FaHeart } from 'react-icons/fa';
 import useUsers from '../../util/useUsers';
 import { useTheme } from '../../context/theme';
 import { GlobalStyle } from '../../assets/styles/global';
@@ -19,7 +19,6 @@ import {
   Form,
   Input,
   Button,
-  Result,
   ImageRounded,
   Line,
   Title,
@@ -29,7 +28,6 @@ import {
 
 } from './styles';
 
-import { IconHearth } from '../../components/Card/styles';
 import Github from '../../assets/lottie/github.json';
 
 import light from '../../assets/styles/light';
@@ -160,7 +158,7 @@ function Search() {
 
         <Input
           type="text"
-          placeholder="Digite seu usuário"
+          placeholder="Type your user"
           onChange={handleChangeInput}
           onKeyPress={handleKeyPress}
         />
@@ -169,7 +167,7 @@ function Search() {
           type="submit"
           onClick={handleClickButton}
         >
-          BUSCAR
+          SEARCH
 
         </Button>
 
@@ -191,7 +189,7 @@ function Search() {
 
       ) : (
 
-        <Result>
+        <main>
 
           <ImageRounded
 
@@ -209,16 +207,16 @@ function Search() {
 
           </FlexCards>
 
-        </Result>
+        </main>
 
       )}
 
       <TitleFooter target="_blank" href="https://github.com/Matheus0liveira">
 
         <p>
-          Feito por Matheus Oliveira Santos
+          Created by: Matheus Oliveira Santos
         </p>
-        <IconHearth />
+        <FaHeart />
 
       </TitleFooter>
     </ThemeProvider>

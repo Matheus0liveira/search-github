@@ -1,13 +1,11 @@
 import React from 'react';
 
+import { FaBook, FaStar } from 'react-icons/fa';
 import useUsers from '../../util/useUsers';
 
 import {
   CardStyled,
   TitleCard,
-  Star,
-  IconBook,
-  IconStar,
   CountStar,
   TitleStar,
   TotalRepos,
@@ -33,13 +31,13 @@ function Card() {
           <CardStyled>
             <TitleStar>
               <TitleCard>
-                <IconBook />
+                <FaBook />
                 {repo.name}
               </TitleCard>
-              <Star>
-                <IconStar />
+              <div>
+                <FaStar />
                 <CountStar>{repo.stargazers_count}</CountStar>
-              </Star>
+              </div>
 
             </TitleStar>
             <Description>

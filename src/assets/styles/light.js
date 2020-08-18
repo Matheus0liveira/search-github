@@ -10,6 +10,7 @@ export default {
     background: '#fff',
     backgroundButton: '#0FCCCE',
     backgroundSecondary: '#ffff',
+    backgroundFooter: '#C1C1C1',
 
   },
 };
