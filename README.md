@@ -6,12 +6,14 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/7141ea4e-4167-42b2-85e1-5506150e8961/deploy-status)](https://app.netlify.com/sites/searchgithubb/deploys)
 
-<div>
+</div>
 
 
 
 
 ## <p align='center'>  Github-Search </p>
+
+
  <p align='center'>
 
  Git Search é um buscador de usuário do github comum, o a intenção desse projeto é mostrar o poder do styled-component.
